@@ -47,7 +47,7 @@ struct Node *inOrderSuccessor(struct Node* root){
 struct Node *delete_Node(struct Node *root, int value){
     struct Node* iPre;
     if (root == NULL){
-        cout<<"tree is empty"<<endl;
+        cout<<"Element is not Present in Tree"<<endl;
         return root;
     }
     if (value < root->value){
