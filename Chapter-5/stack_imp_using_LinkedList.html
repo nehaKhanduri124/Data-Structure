@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACK IMPLEMENT USING LINKED LIST</title>
+</head>
+<body>
+    <h2>Stack Implementation Using Linked list</h2>
+</body>
+<script>
+    class Node{
+        constructor(value){
+            this.value = value;
+            this.link = null;
+        }
+    }
+
+    class Stack_List{
+        constructor(){
+            this.head = 0;
+        }
+
+        push_stack(key){
+            var newNode = new Node(key);
+            newNode.link = this.head;
+            this.head = newNode;
+        }
+
+        pop_stack(){
+            if(this.head == 0){
+                console.log("UnderFlow!");
+            }
+            else{
+                console.log("Popped element : "+this.head.value);
+                this.head = this.head.link;
+            }
+        }
+
+        peek_stack(){
+            if(this.head == 0){
+                console.log("Stack UnderFlow!");
+            }
+            else{
+                console.log("peek element  : "+this.head.value)
+            }
+        }
+
+        display(){
+            if(this.head == 0){
+                console.log(" Stack Underflow!! ");
+            }
+            else{
+                console.log("Elements in the  stack are : ")
+                var temp = this.head;
+                while(temp!=0){
+                    console.log(temp.value);
+                    temp = temp.link;
+                }
+            }
+        }
+    }
+
+    var stack = new Stack_List();
+    stack.push_stack(11);
+    stack.push_stack(12);
+    stack.push_stack(22);
+    stack.push_stack(28);
+    stack.push_stack(31);
+    stack.display(22);
+
+    stack.pop_stack();
+    stack.display();
+
+    stack.peek_stack();
+</script>
+</html>
