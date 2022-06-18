@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUEUE IMPLEMENTATION USING LINKED LIST</title>
+</head>
+
+<body>
+    <h2>Queue Implementation Using Linked List</h2>
+</body>
+<script>
+    class Node {
+        constructor(value) {
+            this.value = value;
+            this.link = null;
+        }
+    }
+
+    class Que {
+        constructor() {
+            this.front = 0;
+            this.rear = 0;
+        }
+
+        EnQueue(key) {
+            let newNode = new Node(key);
+            newNode.link = null;
+            if (this.front == 0 && this.rear == 0) {
+                this.front = this.rear = newNode;
+            }
+            else {
+                this.rear.link = newNode;
+                this.rear = newNode;
+            }
+        }
+
+        DeQueue(){
+            if (this.front == 0 && this.rear == 0) {
+                console.log(" Underflow ");
+            }
+            else if(this.rear == this.front){
+                console.log(" Dequeue element : "+this.front.data);
+                this.front = this.rear = 0;
+            }
+            else{
+                console.log(" Dequeue element : "+this.front.value);
+                this.front = this.front.link;
+            }
+        }
+
+        Peek_queue(){
+            if (this.front == 0 && this.rear == 0) {
+                console.log(" Underflow ");
+            }
+            else{
+                console.log("Peek element : "+this.front.value);
+            }
+        }
+
+        display_queue() {
+            let temp = this.front;
+            if (this.front == 0 && this.rear == 0) {
+                console.log(" Underflow ");
+            }
+            else {
+                console.log(" Elements in the queue :  ");
+                while (temp != null) {
+                    console.log(temp.value)
+                    temp = temp.link;
+                }
+            }
+        }
+    }
+
+    let Q = new Que();
+    Q.EnQueue(98);
+    Q.EnQueue(1);
+    Q.EnQueue(45);
+    Q.EnQueue(28);
+    Q.EnQueue(78);
+    Q.EnQueue(10);
+    Q.display_queue()
+    Q.DeQueue()
+    Q.display_queue()
+    Q.Peek_queue()
+</script>
+</html>
