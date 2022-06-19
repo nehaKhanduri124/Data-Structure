@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIN-HEAP</title>
+</head>
+<body>
+    <h2>Min Heap</h2>
+</body>
+<script>
+    function Heapify(a,i){
+        let size = a.length;
+        let small = i;
+        let l = 2*i +1;
+        let r = 2*i +2;
+
+        if(l<size && a[small]>a[l]){
+            small = l;
+        }
+        if(r<size && a[small]>a[r]){
+            small = r;
+        }
+        if(small!=i){
+            let temp = a[i];
+            a[i] = a[small];
+            a[small] = temp;
+            Heapify(a,i);
+        }
+    }
+
+    function Insert(a,key){
+        let size = a.length;
+        if (size == 0){
+            a.push(key);
+        }
+        else{
+            a.push(key);
+            for(let i=size-1;i>=0;i--){
+                Heapify(a,i);
+            }
+        }
+    }
+
+    function Delete(a,ele){
+        console.log(" After deleting "+ele+" from heap")
+        let size = a.length;
+        let i=0;
+        let flag = 0;
+        for(i=0;i<size;i++){
+            if(a[i] == ele){
+                flag++;
+                break;
+            }
+        }
+        if(flag==0){
+            console.log(ele+ "not present in the heap ");
+            return;
+        }
+        let temp = a[i];
+        a[i] = a[size-1];
+        a[size-1] = temp;
+        a.pop(ele);
+        for(let i=size;i>=0;i--){
+            Heapify(a,i);
+        }
+    }
+
+    function Display(a){
+        console.log("  Min heap is : ");
+        let size = a.length;
+        for(let i=0;i<size;++i){
+            console.log(a[i]);
+        }
+    }
+
+ let A = new Array();
+    
+    Insert(A,1);
+    Insert(A,3);
+    Insert(A,6);
+    Insert(A,5);
+    Insert(A,9);
+  Insert(A,8);
+ // Insert(A,50);
+   Display(A);
+
+    Delete(A,1);
+    Display(A);
+</script>
+</html>
