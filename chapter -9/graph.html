@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAPHS</title>
+</head>
+<body>
+    <h2>Graph</h2>
+    <script>
+        class Graph {
+            constructor(Vertices) {
+                this.Vertices = Vertices;
+                this.Adj_list = new Map();
+            }
+
+            add_Vertex(v) {
+                this.Adj_list.set(v, []);
+            }
+
+            add_Edge(v, w) {
+                this.Adj_list.get(v).push(w);
+                this.Adj_list.get(w).push(v);
+            }
+
+            Display_graph() {
+                var get_keys = this.Adj_list.keys();
+
+                for (var i of get_keys) {
+                    var get_values = this.Adj_list.get(i);
+                    var conc = "";
+
+                    for (var j of get_values)
+                        conc += j + " ";
+                    console.log(i + " -> " + conc);
+                }
+            }
+        }
+        var G = new Graph(5);
+            var vertices = ['A', 'B', 'C', 'D', 'E'];
+
+            for (var i = 0; i < vertices.length; i++) {
+                G.add_Vertex(vertices[i]);
+            }
+
+        
+            G.add_Edge('A', 'B');
+            G.add_Edge('A', 'C');
+            G.add_Edge('B', 'D');
+            G.add_Edge('B', 'E');
+            G.add_Edge('C', 'E');
+           
+            G.Display_graph();
+    </script>
+</body>
+</html>
